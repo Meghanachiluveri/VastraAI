@@ -1,0 +1,30 @@
+{
+  "name": "vastra-backend",
+  "version": "1.0.0",
+  "description": "Unified backend for Vastra.AI human and AI shopping",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "build": "tsc",
+    "seed": "ts-node-dev --transpile-only src/db/seed.ts",
+    "test:scenarios": "ts-node --transpile-only src/test_scenarios.ts",
+    "test:audit": "tsc && node dist/test-comprehensive-audit.js",
+    "start": "node dist/server.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.123.0",
+    "better-sqlite3": "^11.8.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "razorpay": "^2.9.8"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.4",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.7.3"
+  }
+}

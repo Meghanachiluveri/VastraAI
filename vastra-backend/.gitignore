@@ -1,0 +1,9 @@
+node_modules
+.env
+dist
+vastra.db
+*.db
+logs
+vastra.db-journal
+vastra.db-wal
+vastra.db-shm

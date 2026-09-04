@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Vastra.AI Final Color Palette (Light Theme) */
+  --color-bg: #F6F7F2;
+  /* Primary Background */
+  --color-surface: #FCFCF9;
+  /* Primary Surface */
+  --color-surface-elevated: #FFFFFF;
+  /* Elevated Surface */
+  --color-dark-section: #2A2A2A;
+  /* Deep Charcoal/Espresso */
+  --color-text-primary: #2A2A2A;
+  /* Headings, navigation, primary text */
+  --color-text-secondary: #686868;
+  /* Muted secondary text */
+  --color-border: #E6E2DA;
+  /* Cards, inputs, dividers */
+  --color-accent-sage: #8AA48A;
+  /* Primary Sage */
+  --color-accent-sage-dark: #758E75;
+  /* Sage Hover */
+  --color-accent-sage-soft: #CFD8CF;
+  /* Soft Sage */
+  --color-accent-gold: #C9A46A;
+  /* Warm Gold (used very sparingly) */
+}
+
+.dark {
+  /* Vastra.AI Final Color Palette (Dark Theme) */
+  --color-bg: #1F231F;
+  /* Deep Charcoal derived from #2A2A2A */
+
+  --color-surface: #343833;
+  /* Dark Surface */
+  --color-surface-elevated: #3E443D;
+  /* Dark Elevated Surface */
+  --color-dark-section: #181B18;
+  --color-text-primary: #F6F7F2;
+  /* Dark Text */
+  --color-text-secondary: #C8CDC5;
+  /* Dark Seco
+ndary Text */
+  --color-border: #3E443D;
+  /* Dark Border */
+  --color-accent-sage: #8AA48A;
+  /* Dark Primary Sage */
+  --color-accent-sage-dark: #9BB39B;
+  --color-accent-sage-soft: #3E443D;
+  /* Dark Soft Sage */
+  --color-accent-gold: #C9A46A;
+  /* Dark Gold */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: light;
+    scroll-behavior: smooth;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-serif {
+    font-family: 'Playfair Display', 'Fraunces', Georgia, serif;
+  }
+}
+
+/* Custom Luxury Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-sage);
+}
+
+/* Luxury Glassmorphism Utilities */
+.glass-panel {
+  background: rgba(246, 247, 242, 0.90);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.dark .glass-panel {
+  background: rgba(31, 35, 31, 0.90);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* Subtle Gold / Sage Accent Line Dividers */
+.sage-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(138, 164, 138, 0.3) 30%, rgba(138, 164, 138, 0.7) 50%, rgba(138, 164, 138, 0.3) 70%, transparent 100%);
+}
+
+.gold-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(201, 164, 106, 0.2) 30%, rgba(201, 164, 106, 0.6) 50%, rgba(201, 164, 106, 0.2) 70%, transparent 100%);
+}
