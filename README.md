@@ -230,7 +230,7 @@ Two failure modes are deliberately built and tested, not just claimed:
 | Frontend | React 19 + Vite + TypeScript, Tailwind CSS, Framer Motion, Zustand, React Router |
 | Backend | Node.js + Express + TypeScript |
 | Database | SQLite (`better-sqlite3`) |
-| AI / LLM | Anthropic Claude (tool-calling for grounded catalog access, via `claudeService.ts`) |
+| AI / LLM | Anthropic Claude/Gemini (tool-calling for grounded catalog access, via `claudeService.ts`) |
 | Payments | Razorpay — Test Mode (Orders API + Payments API, HMAC-SHA256 verified) |
 | Auth | JWT-based, separated into customer sessions and merchant sessions |
 | Linting | OxLint |
