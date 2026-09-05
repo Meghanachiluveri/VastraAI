@@ -241,172 +241,41 @@ Two failure modes are deliberately built and tested, not just claimed:
 
 ## Project Structure
 
-```
+```text
 Vastra.AI/
-├── frontend/                                # React + Vite Frontend Application
-│   ├── public/                              # Static public assets
-│   │   ├── hero.png
-│   │   ├── icons.svg
-│   │   └── vastra-logo.svg
-│   ├── src/
-│   │   ├── assets/                          # Images, logos, SVG files
-│   │   ├── components/                      # Modular UI components
-│   │   │   ├── ai/                          # AI Concierge & interactive components
-│   │   │   │   ├── AIAgentBanner.tsx
-│   │   │   │   ├── AIPromptModal.tsx
-│   │   │   │   ├── MultiProductConfigCard.tsx
-│   │   │   │   └── SelectionTray.tsx
-│   │   │   ├── auth/                        # Customer authentication modals
-│   │   │   │   └── AuthModal.tsx
-│   │   │   ├── common/                      # Reusable atom/primitive UI components
-│   │   │   │   ├── Badge.tsx
-│   │   │   │   ├── Button.tsx
-│   │   │   │   ├── Drawer.tsx
-│   │   │   │   ├── EmptyState.tsx
-│   │   │   │   ├── LoadingState.tsx
-│   │   │   │   ├── Modal.tsx
-│   │   │   │   ├── PageContainer.tsx
-│   │   │   │   └── SectionHeading.tsx
-│   │   │   ├── layout/                      # Headers, Footers, Navbars, Drawers
-│   │   │   │   ├── AppLayout.tsx
-│   │   │   │   ├── CartDrawer.tsx
-│   │   │   │   ├── Footer.tsx
-│   │   │   │   ├── MobileNav.tsx
-│   │   │   │   ├── Navbar.tsx
-│   │   │   │   ├── SearchModal.tsx
-│   │   │   │   └── ShopWithAIPrompt.tsx
-│   │   │   ├── merchant/                    # Merchant dashboard analytics & simulations
-│   │   │   │   ├── AiActivityFeed.tsx
-│   │   │   │   ├── AiFunnelSection.tsx
-│   │   │   │   ├── AiSessionList.tsx
-│   │   │   │   ├── HumanVsAiComparison.tsx
-│   │   │   │   ├── MerchantHeader.tsx
-│   │   │   │   ├── MerchantRoute.tsx
-│   │   │   │   ├── MerchantSidebar.tsx
-│   │   │   │   ├── MetricCards.tsx
-│   │   │   │   ├── OrderDetailDrawer.tsx
-│   │   │   │   ├── OrdersTable.tsx
-│   │   │   │   ├── SessionTimelineDrawer.tsx
-│   │   │   │   ├── SimulationHistorySection.tsx
-│   │   │   │   ├── SimulationModal.tsx
-│   │   │   │   ├── SimulationResultsModal.tsx
-│   │   │   │   └── UpsellAnalyticsSection.tsx
-│   │   │   ├── product/                     # Product catalog cards, grids & filters
-│   │   │   │   ├── ProductCard.tsx
-│   │   │   │   ├── ProductFilters.tsx
-│   │   │   │   ├── ProductGrid.tsx
-│   │   │   │   └── QuickViewModal.tsx
-│   │   │   └── ui/                          # Shared UI utilities
-│   │   │       └── ImageWithFallback.tsx
-│   │   ├── data/                            # Mock/static fallback data & constants
-│   │   │   ├── categories.ts
-│   │   │   ├── mockAIResponses.ts
-│   │   │   └── products.ts
-│   │   ├── hooks/                           # Custom React hooks
-│   │   │   ├── useReducedMotion.ts
-│   │   │   ├── useScrollElevation.ts
-│   │   │   └── useTheme.ts
-│   │   ├── layouts/                         # Page shell layouts
-│   │   │   └── MainLayout.tsx
-│   │   ├── lib/                             # Utility configs & Axios instance
-│   │   │   ├── axios.ts
-│   │   │   ├── motion.ts
-│   │   │   ├── session.ts
-│   │   │   └── utils.ts
-│   │   ├── pages/                           # Application route views
-│   │   │   ├── AgentPage.tsx                # AI Concierge Chat page
-│   │   │   ├── CheckoutPage.tsx             # Unified checkout flow
-│   │   │   ├── HomePage.tsx                 # Landing storefront
-│   │   │   ├── MenPage.tsx                  # Men's clothing category
-│   │   │   ├── MerchantLoginPage.tsx        # Merchant portal login
-│   │   │   ├── MerchantPage.tsx             # Merchant dashboard & metrics
-│   │   │   ├── NewArrivalsPage.tsx          # New arrivals showcase
-│   │   │   ├── NotFoundPage.tsx             # 404 handler
-│   │   │   ├── OrdersPage.tsx               # Customer order history
-│   │   │   ├── ProductDetailPage.tsx        # PDP with Complete The Look
-│   │   │   ├── SalePage.tsx                 # Discount/sale archive
-│   │   │   ├── ShopPage.tsx                 # Full catalog browse
-│   │   │   └── WomenPage.tsx                # Women's clothing category
-│   │   ├── services/                        # Frontend API & integration services
-│   │   │   ├── agentApi.ts
-│   │   │   ├── api.ts
-│   │   │   ├── explainabilityService.ts
-│   │   │   ├── productService.ts
-│   │   │   └── simulationService.ts
-│   │   ├── stores/                          # Zustand state management stores
-│   │   │   ├── authStore.ts                 # Customer auth state
-│   │   │   ├── cartStore.ts                 # Shopping cart state
-│   │   │   ├── merchantAuthStore.ts         # Merchant auth state
-│   │   │   ├── useCartStore.ts
-│   │   │   ├── useThemeStore.ts
-│   │   │   └── useUIStore.ts
-│   │   ├── types/                           # TypeScript interfaces & types
-│   │   │   ├── ai.ts
-│   │   │   ├── cart.ts
-│   │   │   ├── navigation.ts
-│   │   │   ├── product.ts
-│   │   │   ├── theme.ts
-│   │   │   └── types.ts
-│   │   ├── App.css
-│   │   ├── App.tsx                          # Router & global provider setup
-│   │   ├── index.css                        # Tailwind & core design tokens
-│   │   └── main.tsx                         # React entry point
-│   ├── .env                                 # Local frontend env (API URL, Razorpay)
-│   ├── index.html                           # Root HTML
-│   ├── package.json                         # Dependencies & scripts
-│   ├── tailwind.config.js                   # Tailwind styling config
-│   └── vite.config.ts                       # Vite bundler configuration
+├── frontend/                    # React + Vite frontend
+│   ├── public/                  # Static assets
+│   └── src/
+│       ├── components/          # UI, AI, product & merchant components
+│       ├── data/                # Categories & fallback data
+│       ├── hooks/               # Custom React hooks
+│       ├── layouts/             # Page layouts
+│       ├── lib/                 # Utilities & Axios
+│       ├── pages/               # Application pages
+│       ├── services/            # API & integration services
+│       ├── stores/              # Zustand state management
+│       ├── types/               # TypeScript types
+│       ├── App.tsx
+│       └── main.tsx
+│   ├── package.json
+│   ├── tailwind.config.js
+│   └── vite.config.ts
 │
-├── vastra-backend/                          # Express + SQLite Backend API
+├── vastra-backend/              # Express + SQLite backend
 │   ├── src/
-│   │   ├── db/                              # Database layer
-│   │   │   ├── db.ts                        # SQLite connection (better-sqlite3)
-│   │   │   ├── schema.sql                   # SQL schema definition
-│   │   │   ├── seed.ts                      # Catalog seeder runner
-│   │   │   └── seedData.ts                  # Seed product dataset
-│   │   ├── middleware/                      # Express middlewares
-│   │   │   ├── authMiddleware.ts            # Merchant auth validation
-│   │   │   └── customerAuthMiddleware.ts    # Customer session/token validation
-│   │   ├── routes/                          # API Route Controllers
-│   │   │   ├── agent.routes.ts              # /api/agent (AI conversational concierge)
-│   │   │   ├── auth.routes.ts               # /api/auth (Customer login & signup)
-│   │   │   ├── cart.routes.ts               # /api/cart (Cart management)
-│   │   │   ├── catalog.routes.ts            # /api/products (Catalog, search, filters)
-│   │   │   ├── customer.routes.ts           # /api/customer (Profile & history)
-│   │   │   ├── explainability.routes.ts     # /api/merchant/ai-sessions
-│   │   │   ├── merchant.routes.ts           # /api/merchant (Orders, analytics)
-│   │   │   ├── order.routes.ts              # /api/orders (Order placement)
-│   │   │   ├── payment.routes.ts            # /api/payments (Razorpay gateway)
-│   │   │   └── simulation.routes.ts         # /api/merchant/simulations
-│   │   ├── services/                        # Business logic services
-│   │   │   ├── agentService.ts              # AI prompt handling & recommendation logic
-│   │   │   ├── auditService.ts              # Audit logging
-│   │   │   ├── cartService.ts               # Cart operations
-│   │   │   ├── catalogService.ts            # Product queries & vector/text search
-│   │   │   ├── claudeService.ts             # Anthropic LLM integration
-│   │   │   ├── customerAuthService.ts       # Customer token hashing & validation
-│   │   │   ├── explainabilityService.ts     # Session decision tracking
-│   │   │   ├── merchantAuthService.ts       # Merchant authentication
-│   │   │   ├── merchantService.ts           # Merchant analytics calculation
-│   │   │   ├── orderService.ts              # Order processing & state transitions
-│   │   │   ├── paymentService.ts            # Razorpay order generation & verification
-│   │   │   └── simulationService.ts         # Traffic/agent simulation engine
-│   │   ├── tools/                           # Agent execution tools
-│   │   │   └── index.ts
-│   │   ├── types/                           # Backend TypeScript definitions
-│   │   │   └── index.ts
-│   │   └── server.ts                        # Main Express server entry point
-│   ├── .env                                 # Backend environment variables
-│   ├── package.json                         # Backend dependencies & scripts
-│   ├── tsconfig.json                        # TypeScript configuration
-│   └── vastra.db                            # SQLite database file
+│   │   ├── db/                  # Database & product seed data
+│   │   ├── middleware/          # Authentication middleware
+│   │   ├── routes/              # API endpoints
+│   │   ├── services/            # Business & AI logic
+│   │   ├── tools/               # AI agent tools
+│   │   ├── types/               # Backend types
+│   │   └── server.ts            # Express server
+│   ├── package.json
+│   └── tsconfig.json
 │
-├── .env                                     # Root environment file
-├── .gitignore                               # Git ignored files & folders
-├── .oxlintrc.json                           # Oxlint configuration
-└── README.md                                # Project documentation
+├── .gitignore
+└── README.md
 ```
-
 ---
 
 ## Getting Started
@@ -414,7 +283,7 @@ Vastra.AI/
 ### Prerequisites
 - Node.js 18+
 - A [Razorpay](https://razorpay.com) account, switched to **Test Mode**
-- 
+- Gemini/Claude API Key
 ### 1. Clone and install
 
 ```bash
