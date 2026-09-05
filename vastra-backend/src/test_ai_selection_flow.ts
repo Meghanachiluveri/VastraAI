@@ -92,7 +92,7 @@ async function runTests() {
       }]
     });
 
-    const sizeRecorded = res.selectedItems?.[0]?.size === 'M' || res.context.size === 'M';
+    const sizeRecorded = res.selectedItems?.[0]?.size === 'M' || res.context?.size === 'M';
     if (sizeRecorded) {
       console.log('✓ PASS: Size selection (M) configured directly inside AI flow without manual redirect.\n');
       passedCount++;
@@ -318,7 +318,7 @@ async function runTests() {
     const regB = registerCustomer({ email: emailB, password: 'PassB@123', name: 'Customer B' });
     const idB = regB.customer!.id;
 
-    const cartB = getCart(sessB, 'agent', idB);
+    const cartB = getCart(sessB, 'agent', false, idB);
 
     const isIsolated = cartB.items.length === 0;
     if (isIsolated) {
