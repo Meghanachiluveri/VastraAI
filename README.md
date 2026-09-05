@@ -3,6 +3,13 @@
 Built for **Track 01: AI Growth & Agentic Commerce**
 
 ---
+## 🔗 Live Demo
+
+### 🌐 Vastra.AI — Live Website
+👉 https://vastra-ai-swart.vercel.app
+
+### ⚙️ Backend API
+👉 https://vastraai-production-6c12.up.railway.app/api/health
 
 ## The One-Line Pitch
 
