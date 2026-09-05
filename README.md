@@ -2,6 +2,8 @@
 
 Built for **Track 01: AI Growth & Agentic Commerce**
 
+Vastra.AI is a premium fashion storefront where the **exact same backend** — catalog, cart, checkout, guardrails — serves a human clicking through a website *and* an AI shopping agent chatting with a customer, proving that a merchant's commerce infrastructure can become AI-transactable without building a second, separate system.
+
 ---
 ## 🔗 Live Demo
 
@@ -10,10 +12,6 @@ Built for **Track 01: AI Growth & Agentic Commerce**
 
 ### ⚙️ Backend API
 👉 https://vastraai-production-6c12.up.railway.app/api/health
-
-## The One-Line Pitch
-
-Vastra.AI is a premium fashion storefront where the **exact same backend** — catalog, cart, checkout, guardrails — serves a human clicking through a website *and* an AI shopping agent chatting with a customer, proving that a merchant's commerce infrastructure can become AI-transactable without building a second, separate system.
 
 ---
 
