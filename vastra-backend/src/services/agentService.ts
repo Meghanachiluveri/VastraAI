@@ -1390,7 +1390,7 @@ function handleDeterministicConcierge(
       const pinCode = pinMatch ? pinMatch[1] : '560038';
       const cleanAddressLine = userMessage.replace(/(?:my\s+address\s+is|deliver\s+to|ship\s+to|please\s+send\s+to)\s*:?/gi, '').trim();
       const customer = db.prepare('SELECT id, name, email, phone FROM customers WHERE id = ?').get(session.customerId) as any;
-      
+
       const saved = addCustomerAddress(session.customerId, {
         name: customer?.name || 'Customer',
         phone: customer?.phone || '+91 98765 43210',
@@ -1926,7 +1926,7 @@ function handleDeterministicConcierge(
     // If user asked to buy and checkout immediately (e.g. "add jeans into cart & buy")
     if (intent.isBuyAndCheckout || lowerMsg.includes('& buy') || lowerMsg.includes('and buy') || lowerMsg.includes('& checkout') || lowerMsg.includes('and checkout')) {
       const effectiveCustomerId = session.customerId;
-      
+
       // Check 1: Login check
       if (!effectiveCustomerId) {
         return {
@@ -2585,6 +2585,7 @@ export async function handleAgentMessage(request: AgentMessageRequest): Promise<
   const isDeterministicAction =
     !isClaudeConfigured() ||
     intent.isImpossibleItem ||
+    Boolean(intent.category || intent.productKeyword) ||
     intent.action === 'view_cart' ||
     intent.action === 'add_to_bag' ||
     intent.action === 'remove_from_cart' ||
